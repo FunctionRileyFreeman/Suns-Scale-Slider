@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sun vs. Earth Size Comparison</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    section {
+      padding: 20px;
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    .comparison-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    input[type="range"] {
+      width: 300px;
+      margin: 0 10px;
+    }
+    #comparisonImage {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      width: 50%; /* Initial width based on Earth's scale */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Astonishing Size of the Sun Compared to Earth</h1>
+  </header>
+  <main>
+    <section id="sunSection">
+      <h2>The Sun</h2>
+      <img src="pho/sun.png" alt="Sun">
+      <p>The Sun, at the center of our solar system, is about 1.4 million kilometers in diameter.</p>
+    </section>
+    <section id="earthSection">
+      <h2>The Earth</h2>
+      <img src="pho/earth.png" alt="Earth" width="300" height="300">
+      <p>Our planet Earth has a diameter of about 12,742 kilometers.</p>
+    </section>
+    <section id="comparisonSection">
+      <h2>Interactive Comparison</h2>
+      <div class="comparison-wrapper">
+        <input type="range" id="sizeSlider" min="1" max="100" value="1">
+        <span id="earthCount">1 Earth</span>
+      </div>
+      <img src="pho/earth 2.png" id="comparisonImage" alt="Comparison">
+      <p>Drag the slider to see how many Earths can fit across the diameter of the Sun. So 100 earths is still only 1,274,200 killometers the real number is about 109!</p>
+    </section>
+  </main>
+  <script>
+    const sizeSlider = document.getElementById('sizeSlider');
+    const earthCount = document.getElementById('earthCount');
+    const comparisonImage = document.getElementById('comparisonImage');
+
+    sizeSlider.addEventListener('input', () => {
+      const scaleFactor = sizeSlider.value;
+      earthCount.textContent = `${scaleFactor} Earth${scaleFactor > 1 ? 's' : ''}`;
+      comparisonImage.style.width = `${scaleFactor}%`; // Adjust the width based on scale
+    });
+  </script>
+</body>
+</html>
